@@ -10,7 +10,7 @@ const App = () => {
   let token=localStorage.getItem('token')
   return (
     <div className='App'>
-      <h1>Hello</h1>
+      
       <BrowserRouter>
       <NavBar/>
       <Routes>

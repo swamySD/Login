@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../store/actions';
+import Cookies from 'js-cookie';
 import './Login.css'
+
 const Login = () => {
     const [name,setName]=useState('')
     const [password,setPassword]=useState('')
     const dispatch=useDispatch()
 const navigate=useNavigate()
- let token=localStorage.getItem('token')
+ let token=Cookies.get('token')
     const loginUser=(e)=>{
         e.preventDefault()
         

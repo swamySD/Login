@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Navigate} from 'react-router-dom';
+import  Cookies  from 'js-cookie';
 export const LOGIN_REQUEST="LOGIN_REQUEST";
 export const LOGIN_SUCCESS="LOGIN_SUCCESS";
 export const LOGIN_FAILURE="LOGIN_FAILURE";
@@ -51,9 +52,10 @@ export const userLogin=(username,password)=>{
                 username: username,
                 password: password
             })
-            dispatch(loginSuccess())
-            if(response){
-                localStorage.setItem('token',response.data.token)
+            
+            if(response.ok){
+                dispatch(loginSuccess())
+                Cookies.set('token',response.data.token,{expires:30})
                 }
            console.log(response.data)
         } catch (error) {
